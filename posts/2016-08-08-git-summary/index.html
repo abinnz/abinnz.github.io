@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Git常用命令总结 | Abinnz&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="这里有一篇关于Git入门的教程，是廖雪峰写的教程，内容通俗易懂。在线Git命令窗口：点击这里在下面我总结一些常用的命令： 1. 常用Git Bash命令 创建目录：mkdir dirName 变更目录：cd dirName 显示路径：pwd 显示内容：ls --all  2. Git仓库初始化 初始化前提：cd repName(进入需要创建仓库的目录) 初始化仓库：git init  3. 添加和">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git常用命令总结">
+<meta property="og:url" content="http://abinnz.com/posts/2016-08-08-git-summary/index.html">
+<meta property="og:site_name" content="Abinnz&#39;s blog">
+<meta property="og:description" content="这里有一篇关于Git入门的教程，是廖雪峰写的教程，内容通俗易懂。在线Git命令窗口：点击这里在下面我总结一些常用的命令： 1. 常用Git Bash命令 创建目录：mkdir dirName 变更目录：cd dirName 显示路径：pwd 显示内容：ls --all  2. Git仓库初始化 初始化前提：cd repName(进入需要创建仓库的目录) 初始化仓库：git init  3. 添加和">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-03T11:33:33.880Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git常用命令总结">
+<meta name="twitter:description" content="这里有一篇关于Git入门的教程，是廖雪峰写的教程，内容通俗易懂。在线Git命令窗口：点击这里在下面我总结一些常用的命令： 1. 常用Git Bash命令 创建目录：mkdir dirName 变更目录：cd dirName 显示路径：pwd 显示内容：ls --all  2. Git仓库初始化 初始化前提：cd repName(进入需要创建仓库的目录) 初始化仓库：git init  3. 添加和">
+    
+
+    
+        <link rel="alternate" href="/" title="Abinnz&#39;s blog" type="application/atom+xml" />
+    
+
+    
+
+    <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/open-sans-all@0.1.3/css/open-sans.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="/libs/open-sans/styles.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/source-code-pro@2.30.1/source-code-pro.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="/libs/source-code-pro/styles.css"> -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+    <!-- <script src="/libs/jquery/2.1.3/jquery.min.js"></script> -->
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-86587710-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                
+                <span class="site-title">Abinnz&#39;s blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">Abinnz</h2>
+            <h3 id="title">Web Developer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Guangdong, China</span>
+            <a id="follow" target="_blank" href="https://github.com/abinnz/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                24
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                17
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/abinnz/" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://weibo.com/u/2148510890/" target="_blank" title="weibo" class=tooltip>
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-2016-08-08-git-summary" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Git常用命令总结
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/posts/2016-08-08-git-summary/">
+            <time datetime="2016-08-07T16:00:00.000Z" itemprop="datePublished">2016-08-08</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/技能/">技能</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Git/">Git</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>这里有一篇关于<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">Git入门的教程</a>，是廖雪峰写的教程，内容通俗易懂。<br>在线Git命令窗口：<a href="https://try.github.io/levels/1/challenges/1" target="_blank" rel="noopener">点击这里</a><br>在下面我总结一些常用的命令：</p>
+<h4 id="1-常用Git-Bash命令"><a href="#1-常用Git-Bash命令" class="headerlink" title="1. 常用Git Bash命令"></a>1. 常用Git Bash命令</h4><ul>
+<li>创建目录：<code>mkdir dirName</code></li>
+<li>变更目录：<code>cd dirName</code></li>
+<li>显示路径：<code>pwd</code></li>
+<li>显示内容：<code>ls --all</code></li>
+</ul>
+<h4 id="2-Git仓库初始化"><a href="#2-Git仓库初始化" class="headerlink" title="2. Git仓库初始化"></a>2. Git仓库初始化</h4><ul>
+<li>初始化前提：<code>cd repName</code>(进入需要创建仓库的目录)</li>
+<li>初始化仓库：<code>git init</code></li>
+</ul>
+<h4 id="3-添加和提交文件"><a href="#3-添加和提交文件" class="headerlink" title="3. 添加和提交文件"></a>3. 添加和提交文件</h4><ul>
+<li>添加文件：<code>git add file</code></li>
+<li>添加所有：<code>git add .</code></li>
+<li>提交更新：<code>git commit -m &quot;some comment&quot;</code></li>
+</ul>
+<h4 id="4-查看状态和记录"><a href="#4-查看状态和记录" class="headerlink" title="4. 查看状态和记录"></a>4. 查看状态和记录</h4><ul>
+<li>查看状态：<code>git status</code></li>
+<li>历史记录：<code>git log [--graph]</code></li>
+<li>简洁记录：<code>git log --pretty=oneline</code></li>
+<li>提交记录：<code>git reflog</code></li>
+</ul>
+<h4 id="5-版本回退"><a href="#5-版本回退" class="headerlink" title="5. 版本回退"></a>5. 版本回退</h4><ul>
+<li>回退版本：<code>git reset --hard head^ (N个^代表N个上次版本)</code></li>
+<li>指定版本：<code>git reset --hard commitId</code></li>
+</ul>
+<h4 id="6-修改控制"><a href="#6-修改控制" class="headerlink" title="6. 修改控制"></a>6. 修改控制</h4><ul>
+<li>查看对比：<code>git diff head -- file</code></li>
+<li>删除文件：<code>git rm file</code></li>
+<li>暂存作业：<code>git stash</code></li>
+<li>查看作业：<code>git stash list</code></li>
+<li>回至作业：<code>git stash pop|apply stash@{0}</code></li>
+<li><p>撤销修改</p>
+<blockquote>
+<ol>
+<li>修改后 未add（添加到暂存区） 需要撤销修改时：<br><code>git checkout -- myfile.txt</code> 或 手动删除工作区修改<br>工作区 ： clean  暂存区： clean  </li>
+<li>修改后 add了（未commit） 再次修改文件  要撤销第二次修改时：<br><code>git checkout -- myfile.txt</code> (将暂存区恢复到工作区)<br>暂存区有第一次的修改需要commit  </li>
+<li>修改后 add了（未commit），需要撤销修改时：<br><code>git reset HEAD myfile.txt</code> (将暂存区修改删除)<br>此时工作区的修改还未撤销<br><code>git checkout -- myfile.txt</code> (撤销工作区修改)  </li>
+<li>修改后 add并commit了，需要撤销修改时：<br><code>git reset --hard HEAD^</code>  (版本回退)</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h4 id="7-远程仓库操作"><a href="#7-远程仓库操作" class="headerlink" title="7. 远程仓库操作"></a>7. 远程仓库操作</h4><ul>
+<li>SSH-key生成：<code>ssh-keygen -t rsa -C &quot;youremail@domain.com&quot;</code></li>
+<li>添加远程库：<code>git remote add origin repositoryAddress</code></li>
+<li>推送至远程：<code>git push [-u] origin master(分支)</code></li>
+<li>更新本地库：<code>git pull origin master(分支)</code></li>
+<li>克隆远程库：<code>git clone repositoryAddress</code></li>
+<li>查看远程库：<code>git remote -v</code></li>
+</ul>
+<h4 id="8-分支创建与合并"><a href="#8-分支创建与合并" class="headerlink" title="8. 分支创建与合并"></a>8. 分支创建与合并</h4><ul>
+<li>分支创建：<code>git branch &lt;branch-name&gt;</code></li>
+<li>切换分支：<code>git checkout &lt;branch-name&gt;</code></li>
+<li>创建切换：<code>git checkout -b &lt;branch-name&gt;</code></li>
+<li>查看分支：<code>git branch</code></li>
+<li>合并分支：<code>git merge [--no-ff] [-m &quot;some comment&quot;] &lt;branch-name&gt;</code></li>
+<li>删除分支：<code>git branch -d &lt;branch-name&gt;</code></li>
+</ul>
+<h4 id="9-标签管理"><a href="#9-标签管理" class="headerlink" title="9. 标签管理"></a>9. 标签管理</h4><ul>
+<li>所有标签：<code>git tag</code></li>
+<li>新建标签：<code>git tag &lt;tag-name&gt;</code></li>
+<li>标签信息：<code>git show &lt;tag-name&gt;</code></li>
+<li>删除标签：<code>git tag -d &lt;tag-name&gt;</code></li>
+<li>远程标签：<code>git push origin :refs/tags/&lt;tagname&gt;</code>(删除)</li>
+</ul>
+<h4 id="10-配置Git全局设定"><a href="#10-配置Git全局设定" class="headerlink" title="10. 配置Git全局设定"></a>10. 配置Git全局设定</h4><ul>
+<li>Git显示颜色：<code>git config --global color.ui true</code></li>
+<li>Git用户设定：<code>git config --global user.name userName</code></li>
+<li>Git邮箱设定：<code>git config --global user.email userEmail</code></li>
+<li>Git别名设定：<code>git config --global alias paragraph</code></li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+    <div class="a2a_kit a2a_default_style">
+    <a class="a2a_dd" href="https://www.addtoany.com/share">Share</a>
+    <span class="a2a_divider"></span>
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_google_plus"></a>
+    <a class="a2a_button_pinterest"></a>
+    <a class="a2a_button_tumblr"></a>
+</div>
+<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+<style>
+    .a2a_menu {
+        border-radius: 4px;
+    }
+    .a2a_menu a {
+        margin: 2px 0;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 4px;
+        color: inherit !important;
+        font-family: 'Microsoft Yahei';
+    }
+    #a2apage_dropdown {
+        margin: 10px 0;
+    }
+    .a2a_mini_services {
+        padding: 10px;
+    }
+    a.a2a_i,
+    i.a2a_i {
+        width: 122px;
+        line-height: 16px;
+    }
+    a.a2a_i .a2a_svg,
+    a.a2a_more .a2a_svg {
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        vertical-align: top;
+        background-size: 16px;
+    }
+    a.a2a_i {
+        border: none !important;
+    }
+    a.a2a_menu_show_more_less {
+        margin: 0;
+        padding: 10px 0;
+        line-height: 16px;
+    }
+    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+    .a2a_mini_services{*+height:1%;}
+</style>
+
+</div>
+
+            
+    
+        <a href="http://abinnz.com/posts/2016-08-08-git-summary/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://abinnz.com/posts/2016-08-08-git-summary/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/posts/2016-08-12-oracle-null/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    对于NULL值的处理-Oracle
+                
+            </div>
+        </a>
+    
+    
+        <a href="/posts/2016-08-06-first-post/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">这是我第一篇博客!</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/应用部署/">应用部署</a></p>
+                            <p class="item-title"><a href="/posts/2018-01-08-aliyun-ecs-deploy-pyspider-summary/" class="title">阿里云ECS部署Pyspider总结</a></p>
+                            <p class="item-date"><time datetime="2018-01-07T16:00:00.000Z" itemprop="datePublished">2018-01-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/技能/">技能</a></p>
+                            <p class="item-title"><a href="/posts/2017-12-19-cntlm-proxy-setting/" class="title">公司内网透过Cntlm代理上网</a></p>
+                            <p class="item-date"><time datetime="2017-12-18T16:00:00.000Z" itemprop="datePublished">2017-12-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/数据库/">数据库</a></p>
+                            <p class="item-title"><a href="/posts/2017-12-14-oracle-single-column-product/" class="title">Oracle 同一栏位数值相乘的解决办法</a></p>
+                            <p class="item-date"><time datetime="2017-12-13T16:00:00.000Z" itemprop="datePublished">2017-12-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/数据库/">数据库</a></p>
+                            <p class="item-title"><a href="/posts/2017-08-20-oracle-virtual-table/" class="title">Oracle 构造虚表方法</a></p>
+                            <p class="item-date"><time datetime="2017-08-19T16:00:00.000Z" itemprop="datePublished">2017-08-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/工作经历/">工作经历</a></p>
+                            <p class="item-title"><a href="/posts/2017-07-02-summary-for-half-year-of-2017/" class="title">2017前半年总结</a></p>
+                            <p class="item-date"><time datetime="2017-07-01T16:00:00.000Z" itemprop="datePublished">2017-07-02</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工作经历/">工作经历</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/应用部署/">应用部署</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技能/">技能</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活经历/">生活经历</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程实践/">编程实践</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程语言/">编程语言</a><span class="category-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2017/">2017</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bootstrap/">Bootstrap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cntlm/">Cntlm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaWeb/">JavaWeb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/">Oracle</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pyspider/">Pyspider</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记录/">记录</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/2017/" style="font-size: 10px;">2017</a> <a href="/tags/Bootstrap/" style="font-size: 15px;">Bootstrap</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Cntlm/" style="font-size: 10px;">Cntlm</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JS/" style="font-size: 15px;">JS</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaWeb/" style="font-size: 10px;">JavaWeb</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Oracle/" style="font-size: 20px;">Oracle</a> <a href="/tags/Pyspider/" style="font-size: 10px;">Pyspider</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/爬虫/" style="font-size: 15px;">爬虫</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 Abinnz<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://abinnz.com/posts/2016-08-08-git-summary/';
+        
+        this.page.identifier = '2016-08-08-git-summary';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'abinnz-blog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

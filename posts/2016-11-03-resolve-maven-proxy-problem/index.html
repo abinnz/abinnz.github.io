@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>解决Maven使用代理连接问题 | Abinnz&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="前言&amp;emsp;&amp;emsp;在国内使用Maven下载远程仓库jar包，速度真是不太理想，慢的真心无法忍受。所以，最好的解决办法是通过Maven设置代理(使用XX-Net翻墙)或者Maven使用代理。 Maven设置代理 编辑 ${user.home}/.m2/settings.xml 文件，如果该目录下没有该文件，复制 $MAVEN_HOME/conf/setting.xml  找到&amp;lt;pro">
+<meta name="keywords" content="Maven">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决Maven使用代理连接问题">
+<meta property="og:url" content="http://abinnz.com/posts/2016-11-03-resolve-maven-proxy-problem/index.html">
+<meta property="og:site_name" content="Abinnz&#39;s blog">
+<meta property="og:description" content="前言&amp;emsp;&amp;emsp;在国内使用Maven下载远程仓库jar包，速度真是不太理想，慢的真心无法忍受。所以，最好的解决办法是通过Maven设置代理(使用XX-Net翻墙)或者Maven使用代理。 Maven设置代理 编辑 ${user.home}/.m2/settings.xml 文件，如果该目录下没有该文件，复制 $MAVEN_HOME/conf/setting.xml  找到&amp;lt;pro">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-03T12:10:14.815Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="解决Maven使用代理连接问题">
+<meta name="twitter:description" content="前言&amp;emsp;&amp;emsp;在国内使用Maven下载远程仓库jar包，速度真是不太理想，慢的真心无法忍受。所以，最好的解决办法是通过Maven设置代理(使用XX-Net翻墙)或者Maven使用代理。 Maven设置代理 编辑 ${user.home}/.m2/settings.xml 文件，如果该目录下没有该文件，复制 $MAVEN_HOME/conf/setting.xml  找到&amp;lt;pro">
+    
+
+    
+        <link rel="alternate" href="/" title="Abinnz&#39;s blog" type="application/atom+xml" />
+    
+
+    
+
+    <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/open-sans-all@0.1.3/css/open-sans.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="/libs/open-sans/styles.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/source-code-pro@2.30.1/source-code-pro.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="/libs/source-code-pro/styles.css"> -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+    <!-- <script src="/libs/jquery/2.1.3/jquery.min.js"></script> -->
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-86587710-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                
+                <span class="site-title">Abinnz&#39;s blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">Abinnz</h2>
+            <h3 id="title">Web Developer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Guangdong, China</span>
+            <a id="follow" target="_blank" href="https://github.com/abinnz/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                24
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                17
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/abinnz/" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://weibo.com/u/2148510890/" target="_blank" title="weibo" class=tooltip>
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-2016-11-03-resolve-maven-proxy-problem" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            解决Maven使用代理连接问题
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/posts/2016-11-03-resolve-maven-proxy-problem/">
+            <time datetime="2016-11-02T16:00:00.000Z" itemprop="datePublished">2016-11-03</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/编程实践/">编程实践</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Maven/">Maven</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;&emsp;在国内使用Maven下载远程仓库jar包，速度真是不太理想，慢的真心无法忍受。所以，最好的解决办法是通过<a href="#Maven设置代理">Maven设置代理</a>(<code>使用XX-Net翻墙</code>)或者<a href="#Maven使用镜像">Maven使用代理</a>。</p>
+<h3 id="Maven设置代理"><a href="#Maven设置代理" class="headerlink" title="Maven设置代理"></a>Maven设置代理</h3><ol>
+<li>编辑 ${user.home}/.m2/settings.xml 文件，如果该目录下没有该文件，复制 $MAVEN_HOME/conf/setting.xml </li>
+<li><p>找到<code>&lt;proxies&gt;</code>节点，设置代理信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;proxy&gt;</span><br><span class="line">  &lt;id&gt;xx-net&lt;/id&gt;</span><br><span class="line">  &lt;active&gt;true&lt;/active&gt;</span><br><span class="line">  &lt;protocol&gt;http&lt;/protocol&gt;</span><br><span class="line">  &lt;host&gt;127.0.0.1&lt;/host&gt;</span><br><span class="line">  &lt;port&gt;8087&lt;/port&gt;</span><br><span class="line">&lt;/proxy&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>完成上述配置，仍然还是会有<code>问题</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ERROR] Failed to execute goal on project xiaov: Could not resolve dependencies for project org.b3log:xiaov:war:2.2.0: Failed to collect dependencies at org.b3log:latke:jar:2.3.5 -&gt; com.alibaba:druid:jar:1.0.16: Failed to read artifact descriptor for com.alibaba:druid:jar:1.0.16: Could not transfer artifact com.alibaba:druid:pom:1.0.16 from/to central (https://repo.maven.apache.org/maven2): sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target -&gt; [Help 1]</span><br></pre></td></tr></table></figure>
+<p>原因就是Maven走的是https，使用代理连接才会出现上述SSL认证问题。<br>更多解决办法：<a href="http://stackoverflow.com/questions/25911623/problems-using-maven-and-ssl-behind-proxy" target="_blank" rel="noopener">点击查看</a>，<strong>推荐使用下面的解决办法</strong>。</p>
+</li>
+<li><p>最简洁的Maven配置<br>请将下述配置信息覆盖<code>settings.xml</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;settings xmlns=&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span><br><span class="line">          xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">          xsi:schemaLocation=&quot;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&quot;&gt;</span><br><span class="line">  &lt;proxies&gt;</span><br><span class="line">    &lt;proxy&gt;</span><br><span class="line">      &lt;id&gt;xx-net&lt;/id&gt;</span><br><span class="line">      &lt;active&gt;true&lt;/active&gt;</span><br><span class="line">      &lt;protocol&gt;http&lt;/protocol&gt;</span><br><span class="line">      &lt;host&gt;127.0.0.1&lt;/host&gt;</span><br><span class="line">      &lt;port&gt;8087&lt;/port&gt;</span><br><span class="line">    &lt;/proxy&gt;</span><br><span class="line">  &lt;/proxies&gt;</span><br><span class="line">  &lt;profiles&gt;</span><br><span class="line">    &lt;profile&gt;</span><br><span class="line">      &lt;id&gt;securecentral&lt;/id&gt;</span><br><span class="line">      &lt;repositories&gt;</span><br><span class="line">        &lt;repository&gt;</span><br><span class="line">          &lt;id&gt;central&lt;/id&gt;</span><br><span class="line">          &lt;url&gt;http://repo1.maven.org/maven2&lt;/url&gt;</span><br><span class="line">          &lt;releases&gt;</span><br><span class="line">            &lt;enabled&gt;true&lt;/enabled&gt;</span><br><span class="line">          &lt;/releases&gt;</span><br><span class="line">        &lt;/repository&gt;</span><br><span class="line">      &lt;/repositories&gt;</span><br><span class="line">      &lt;pluginRepositories&gt;</span><br><span class="line">        &lt;pluginRepository&gt;</span><br><span class="line">          &lt;id&gt;central&lt;/id&gt;</span><br><span class="line">          &lt;url&gt;http://repo1.maven.org/maven2&lt;/url&gt;</span><br><span class="line">          &lt;releases&gt;</span><br><span class="line">            &lt;enabled&gt;true&lt;/enabled&gt;</span><br><span class="line">          &lt;/releases&gt;</span><br><span class="line">        &lt;/pluginRepository&gt;</span><br><span class="line">      &lt;/pluginRepositories&gt;</span><br><span class="line">    &lt;/profile&gt;</span><br><span class="line">  &lt;/profiles&gt;</span><br><span class="line">  &lt;activeProfiles&gt;</span><br><span class="line">    &lt;activeProfile&gt;securecentral&lt;/activeProfile&gt;</span><br><span class="line">  &lt;/activeProfiles&gt;</span><br><span class="line">&lt;/settings&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Maven使用镜像"><a href="#Maven使用镜像" class="headerlink" title="Maven使用镜像"></a>Maven使用镜像</h3><p>这里推荐使用阿里Maven仓库镜像（<a href="http://maven.aliyun.com/nexus/#view-repositories;public~browsestorage" target="_blank" rel="noopener">Nexus仓库</a>），希望能稳定存活。<br>修改Maven的settings.xml文件，配置mirrors的子节点，添加如下mirror：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;mirror&gt;</span><br><span class="line">    &lt;id&gt;nexus-aliyun&lt;/id&gt;</span><br><span class="line">    &lt;mirrorOf&gt;*&lt;/mirrorOf&gt;</span><br><span class="line">    &lt;name&gt;Nexus aliyun&lt;/name&gt;</span><br><span class="line">    &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;</span><br><span class="line">&lt;/mirror&gt;</span><br></pre></td></tr></table></figure></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+    <div class="a2a_kit a2a_default_style">
+    <a class="a2a_dd" href="https://www.addtoany.com/share">Share</a>
+    <span class="a2a_divider"></span>
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_google_plus"></a>
+    <a class="a2a_button_pinterest"></a>
+    <a class="a2a_button_tumblr"></a>
+</div>
+<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+<style>
+    .a2a_menu {
+        border-radius: 4px;
+    }
+    .a2a_menu a {
+        margin: 2px 0;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 4px;
+        color: inherit !important;
+        font-family: 'Microsoft Yahei';
+    }
+    #a2apage_dropdown {
+        margin: 10px 0;
+    }
+    .a2a_mini_services {
+        padding: 10px;
+    }
+    a.a2a_i,
+    i.a2a_i {
+        width: 122px;
+        line-height: 16px;
+    }
+    a.a2a_i .a2a_svg,
+    a.a2a_more .a2a_svg {
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        vertical-align: top;
+        background-size: 16px;
+    }
+    a.a2a_i {
+        border: none !important;
+    }
+    a.a2a_menu_show_more_less {
+        margin: 0;
+        padding: 10px 0;
+        line-height: 16px;
+    }
+    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+    .a2a_mini_services{*+height:1%;}
+</style>
+
+</div>
+
+            
+    
+        <a href="http://abinnz.com/posts/2016-11-03-resolve-maven-proxy-problem/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://abinnz.com/posts/2016-11-03-resolve-maven-proxy-problem/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/posts/2016-11-09-manually-install-mysql-services/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    手动安装MySQL服务
+                
+            </div>
+        </a>
+    
+    
+        <a href="/posts/2016-10-31-python-spider-startupnews/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Startup News爬虫</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/应用部署/">应用部署</a></p>
+                            <p class="item-title"><a href="/posts/2018-01-08-aliyun-ecs-deploy-pyspider-summary/" class="title">阿里云ECS部署Pyspider总结</a></p>
+                            <p class="item-date"><time datetime="2018-01-07T16:00:00.000Z" itemprop="datePublished">2018-01-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/技能/">技能</a></p>
+                            <p class="item-title"><a href="/posts/2017-12-19-cntlm-proxy-setting/" class="title">公司内网透过Cntlm代理上网</a></p>
+                            <p class="item-date"><time datetime="2017-12-18T16:00:00.000Z" itemprop="datePublished">2017-12-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/数据库/">数据库</a></p>
+                            <p class="item-title"><a href="/posts/2017-12-14-oracle-single-column-product/" class="title">Oracle 同一栏位数值相乘的解决办法</a></p>
+                            <p class="item-date"><time datetime="2017-12-13T16:00:00.000Z" itemprop="datePublished">2017-12-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/数据库/">数据库</a></p>
+                            <p class="item-title"><a href="/posts/2017-08-20-oracle-virtual-table/" class="title">Oracle 构造虚表方法</a></p>
+                            <p class="item-date"><time datetime="2017-08-19T16:00:00.000Z" itemprop="datePublished">2017-08-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/工作经历/">工作经历</a></p>
+                            <p class="item-title"><a href="/posts/2017-07-02-summary-for-half-year-of-2017/" class="title">2017前半年总结</a></p>
+                            <p class="item-date"><time datetime="2017-07-01T16:00:00.000Z" itemprop="datePublished">2017-07-02</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工作经历/">工作经历</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/应用部署/">应用部署</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技能/">技能</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活经历/">生活经历</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程实践/">编程实践</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程语言/">编程语言</a><span class="category-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2017/">2017</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bootstrap/">Bootstrap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cntlm/">Cntlm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaWeb/">JavaWeb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/">Oracle</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pyspider/">Pyspider</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记录/">记录</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/2017/" style="font-size: 10px;">2017</a> <a href="/tags/Bootstrap/" style="font-size: 15px;">Bootstrap</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Cntlm/" style="font-size: 10px;">Cntlm</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JS/" style="font-size: 15px;">JS</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaWeb/" style="font-size: 10px;">JavaWeb</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Oracle/" style="font-size: 20px;">Oracle</a> <a href="/tags/Pyspider/" style="font-size: 10px;">Pyspider</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/爬虫/" style="font-size: 15px;">爬虫</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 Abinnz<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://abinnz.com/posts/2016-11-03-resolve-maven-proxy-problem/';
+        
+        this.page.identifier = '2016-11-03-resolve-maven-proxy-problem';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'abinnz-blog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

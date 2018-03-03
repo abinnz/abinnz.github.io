@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>我的项目经验总结 | Abinnz&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="我的总结&amp;emsp;&amp;emsp;老大布置的新项目是由我和另一名小伙伴合作完成的，历经整整两个多月的时间，项目也即将上线。之前本想计划着项目一上线，就总结项目过程的心坎经历，但是最后还是等不及了，想尽快记录自己的心得体会。&amp;emsp;&amp;emsp;最开始，老大说公司要求做某某系统，需求这方面是老大与公司相关人员探讨的。谈需求这一阶段我和小伙伴也就没参与，但是最终确认的需求必须是我们明确知道的。因为涉及">
+<meta name="keywords" content="总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我的项目经验总结">
+<meta property="og:url" content="http://abinnz.com/posts/2016-11-23-project-summary/index.html">
+<meta property="og:site_name" content="Abinnz&#39;s blog">
+<meta property="og:description" content="我的总结&amp;emsp;&amp;emsp;老大布置的新项目是由我和另一名小伙伴合作完成的，历经整整两个多月的时间，项目也即将上线。之前本想计划着项目一上线，就总结项目过程的心坎经历，但是最后还是等不及了，想尽快记录自己的心得体会。&amp;emsp;&amp;emsp;最开始，老大说公司要求做某某系统，需求这方面是老大与公司相关人员探讨的。谈需求这一阶段我和小伙伴也就没参与，但是最终确认的需求必须是我们明确知道的。因为涉及">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-03T11:12:03.870Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="我的项目经验总结">
+<meta name="twitter:description" content="我的总结&amp;emsp;&amp;emsp;老大布置的新项目是由我和另一名小伙伴合作完成的，历经整整两个多月的时间，项目也即将上线。之前本想计划着项目一上线，就总结项目过程的心坎经历，但是最后还是等不及了，想尽快记录自己的心得体会。&amp;emsp;&amp;emsp;最开始，老大说公司要求做某某系统，需求这方面是老大与公司相关人员探讨的。谈需求这一阶段我和小伙伴也就没参与，但是最终确认的需求必须是我们明确知道的。因为涉及">
+    
+
+    
+        <link rel="alternate" href="/" title="Abinnz&#39;s blog" type="application/atom+xml" />
+    
+
+    
+
+    <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/open-sans-all@0.1.3/css/open-sans.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="/libs/open-sans/styles.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/source-code-pro@2.30.1/source-code-pro.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="/libs/source-code-pro/styles.css"> -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+    <!-- <script src="/libs/jquery/2.1.3/jquery.min.js"></script> -->
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-86587710-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                
+                <span class="site-title">Abinnz&#39;s blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">Abinnz</h2>
+            <h3 id="title">Web Developer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Guangdong, China</span>
+            <a id="follow" target="_blank" href="https://github.com/abinnz/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                24
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                17
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/abinnz/" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://weibo.com/u/2148510890/" target="_blank" title="weibo" class=tooltip>
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-2016-11-23-project-summary" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            我的项目经验总结
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/posts/2016-11-23-project-summary/">
+            <time datetime="2016-11-22T16:00:00.000Z" itemprop="datePublished">2016-11-23</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/工作经历/">工作经历</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/总结/">总结</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h3 id="我的总结"><a href="#我的总结" class="headerlink" title="我的总结"></a>我的总结</h3><p>&emsp;&emsp;老大布置的新项目是由我和另一名小伙伴合作完成的，历经整整两个多月的时间，项目也即将上线。之前本想计划着项目一上线，就总结项目过程的心坎经历，但是最后还是等不及了，想尽快记录自己的心得体会。<br>&emsp;&emsp;最开始，老大说公司要求做某某系统，需求这方面是老大与公司相关人员探讨的。谈需求这一阶段我和小伙伴也就没参与，但是最终确认的需求必须是我们明确知道的。因为涉及的需求任务将会由我和小伙伴去开发完成。将近约两个多星期的时间，一些需求逐步明确，与此我和另一名小伙伴也开始着手制作系统的页面原型。作为后端的我们，首选Bootstrap作为制作系统页面的框架。我们套用后台模板，选定Bootstrap特定主题，很快完成系统页面的原型。页面的元素无非就是一些表单，表格，图表之类的，并且适当考虑页面元素的布局。<br>&emsp;&emsp;我们做完的系统页面原型，还需经过老大的审核。反反复复几次修改后，终于敲定系统的页面原型。其实我们心里都明白没有一成不变的需求，说不定说改就改。从页面上大致能看出整个系统的功能轮廓，也知道哪块的难易程度。对于一些技术难点，我们也开始着手查找解决方案，优先挑选一些轮子供项目使用。<br>&emsp;&emsp;接下来，我们开始建数据库模型，根据系统的需求确定系统需要的表和字段，以及字段需要的约束。当然，同样需要让老大审核，确保没有遗漏以及建表合理。对于建表其实需要久经设计数据库表的功底，考虑多方面的因素，满足当前需求并且与系统需求契合。对于这一方面的设计，我可能比较薄弱，考虑的也不是很全面，需要未来很长一段时间来琢磨和弥补。<br>&emsp;&emsp;设计完数据库表，小伙伴也开始建表及创建系统实体。而我开始搭建系统的架构，设定各个模块界限并记录开发须知便于团队合作。系统整个架构关键点在于清晰划分各个模块功能，以及其它资源的存放。同时，依据前期讨论的技术框架进行整合，并且保证最小系统能正常运行。初期系统的构建也就到此结束了。<br>&emsp;&emsp;下一步，就是我们正式开始编程实现的阶段。整个实现的过程是自底向上的，依序Model -&gt; Dao -&gt; Service。每一步我们都进行单元测试，确保各个函数单元正确运行。单元测试给人有点“磨刀不误砍柴工”的意思，就是不要嫌弃麻烦，这也是系统确保稳定运行的前提。在编程实现的阶段，少不了碰上一些大大小小的问题。当然，我认为如何快速解决问题更是一种能力，通过有效的配合Google+StackFlow，以此决解遇到的问题。在这个阶段，我们依据功能开发计划表按部就班，进行系统功能开发。最后，是进行系统整合测试，这里“最后”似乎有点不严谨。其实我们是逐步完成各个模块功能，所以整合测试是穿插在整个编程实现过程的。<br>&emsp;&emsp;我们完成功能开发后，开始对系统进行功能演示。这个阶段就是针对系统功能的评估以及提出改进建议。然后我们再根据会议提出的建议对系统进行改进。经过几次改进后，系统的第一个正式版本就此诞生了。后面，我们也针对不同角色写用户使用教程，以便于用户须知。<br>&emsp;&emsp;最后一步，就是等待项目的上线……</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+    <div class="a2a_kit a2a_default_style">
+    <a class="a2a_dd" href="https://www.addtoany.com/share">Share</a>
+    <span class="a2a_divider"></span>
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_google_plus"></a>
+    <a class="a2a_button_pinterest"></a>
+    <a class="a2a_button_tumblr"></a>
+</div>
+<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+<style>
+    .a2a_menu {
+        border-radius: 4px;
+    }
+    .a2a_menu a {
+        margin: 2px 0;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 4px;
+        color: inherit !important;
+        font-family: 'Microsoft Yahei';
+    }
+    #a2apage_dropdown {
+        margin: 10px 0;
+    }
+    .a2a_mini_services {
+        padding: 10px;
+    }
+    a.a2a_i,
+    i.a2a_i {
+        width: 122px;
+        line-height: 16px;
+    }
+    a.a2a_i .a2a_svg,
+    a.a2a_more .a2a_svg {
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        vertical-align: top;
+        background-size: 16px;
+    }
+    a.a2a_i {
+        border: none !important;
+    }
+    a.a2a_menu_show_more_less {
+        margin: 0;
+        padding: 10px 0;
+        line-height: 16px;
+    }
+    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+    .a2a_mini_services{*+height:1%;}
+</style>
+
+</div>
+
+            
+    
+        <a href="http://abinnz.com/posts/2016-11-23-project-summary/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://abinnz.com/posts/2016-11-23-project-summary/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/posts/2016-12-04-css-div-center-layout/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    div水平垂直居中
+                
+            </div>
+        </a>
+    
+    
+        <a href="/posts/2016-11-09-manually-install-mysql-services/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">手动安装MySQL服务</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/应用部署/">应用部署</a></p>
+                            <p class="item-title"><a href="/posts/2018-01-08-aliyun-ecs-deploy-pyspider-summary/" class="title">阿里云ECS部署Pyspider总结</a></p>
+                            <p class="item-date"><time datetime="2018-01-07T16:00:00.000Z" itemprop="datePublished">2018-01-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/技能/">技能</a></p>
+                            <p class="item-title"><a href="/posts/2017-12-19-cntlm-proxy-setting/" class="title">公司内网透过Cntlm代理上网</a></p>
+                            <p class="item-date"><time datetime="2017-12-18T16:00:00.000Z" itemprop="datePublished">2017-12-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/数据库/">数据库</a></p>
+                            <p class="item-title"><a href="/posts/2017-12-14-oracle-single-column-product/" class="title">Oracle 同一栏位数值相乘的解决办法</a></p>
+                            <p class="item-date"><time datetime="2017-12-13T16:00:00.000Z" itemprop="datePublished">2017-12-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/数据库/">数据库</a></p>
+                            <p class="item-title"><a href="/posts/2017-08-20-oracle-virtual-table/" class="title">Oracle 构造虚表方法</a></p>
+                            <p class="item-date"><time datetime="2017-08-19T16:00:00.000Z" itemprop="datePublished">2017-08-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/工作经历/">工作经历</a></p>
+                            <p class="item-title"><a href="/posts/2017-07-02-summary-for-half-year-of-2017/" class="title">2017前半年总结</a></p>
+                            <p class="item-date"><time datetime="2017-07-01T16:00:00.000Z" itemprop="datePublished">2017-07-02</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工作经历/">工作经历</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/应用部署/">应用部署</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技能/">技能</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活经历/">生活经历</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程实践/">编程实践</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程语言/">编程语言</a><span class="category-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2017/">2017</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bootstrap/">Bootstrap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cntlm/">Cntlm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaWeb/">JavaWeb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/">Oracle</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pyspider/">Pyspider</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记录/">记录</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/2017/" style="font-size: 10px;">2017</a> <a href="/tags/Bootstrap/" style="font-size: 15px;">Bootstrap</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Cntlm/" style="font-size: 10px;">Cntlm</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JS/" style="font-size: 15px;">JS</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaWeb/" style="font-size: 10px;">JavaWeb</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Oracle/" style="font-size: 20px;">Oracle</a> <a href="/tags/Pyspider/" style="font-size: 10px;">Pyspider</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/爬虫/" style="font-size: 15px;">爬虫</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 Abinnz<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://abinnz.com/posts/2016-11-23-project-summary/';
+        
+        this.page.identifier = '2016-11-23-project-summary';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'abinnz-blog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

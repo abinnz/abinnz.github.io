@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>初识Bootstrap，左侧菜单栏的制作 | Abinnz&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="前言&amp;emsp;&amp;emsp;最近，有个简易的任务需要做个后台管理系统，没有现成的页面模板，只能亲自动手。有两个方案：    用别人写好的后台模板页面拿来改的，修改复杂程度高，同时任务需求也很简单，用了别人的模板更容易束缚自己。   想着Bootstrap前端框架的强大，不如利用这次任务的机会初识Bootstrap，简易制后台页面，满足任务需求。显然，跟着Bootstrap中文网的实例很快就做出想要">
+<meta name="keywords" content="Bootstrap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识Bootstrap，左侧菜单栏的制作">
+<meta property="og:url" content="http://abinnz.com/posts/2016-09-07-my-bootstrap-demo/index.html">
+<meta property="og:site_name" content="Abinnz&#39;s blog">
+<meta property="og:description" content="前言&amp;emsp;&amp;emsp;最近，有个简易的任务需要做个后台管理系统，没有现成的页面模板，只能亲自动手。有两个方案：    用别人写好的后台模板页面拿来改的，修改复杂程度高，同时任务需求也很简单，用了别人的模板更容易束缚自己。   想着Bootstrap前端框架的强大，不如利用这次任务的机会初识Bootstrap，简易制后台页面，满足任务需求。显然，跟着Bootstrap中文网的实例很快就做出想要">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-03T11:53:15.632Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初识Bootstrap，左侧菜单栏的制作">
+<meta name="twitter:description" content="前言&amp;emsp;&amp;emsp;最近，有个简易的任务需要做个后台管理系统，没有现成的页面模板，只能亲自动手。有两个方案：    用别人写好的后台模板页面拿来改的，修改复杂程度高，同时任务需求也很简单，用了别人的模板更容易束缚自己。   想着Bootstrap前端框架的强大，不如利用这次任务的机会初识Bootstrap，简易制后台页面，满足任务需求。显然，跟着Bootstrap中文网的实例很快就做出想要">
+    
+
+    
+        <link rel="alternate" href="/" title="Abinnz&#39;s blog" type="application/atom+xml" />
+    
+
+    
+
+    <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/open-sans-all@0.1.3/css/open-sans.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="/libs/open-sans/styles.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/source-code-pro@2.30.1/source-code-pro.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="/libs/source-code-pro/styles.css"> -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+    <!-- <script src="/libs/jquery/2.1.3/jquery.min.js"></script> -->
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-86587710-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                
+                <span class="site-title">Abinnz&#39;s blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">Abinnz</h2>
+            <h3 id="title">Web Developer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Guangdong, China</span>
+            <a id="follow" target="_blank" href="https://github.com/abinnz/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                24
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                17
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/abinnz/" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://weibo.com/u/2148510890/" target="_blank" title="weibo" class=tooltip>
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-2016-09-07-my-bootstrap-demo" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            初识Bootstrap，左侧菜单栏的制作
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/posts/2016-09-07-my-bootstrap-demo/">
+            <time datetime="2016-09-06T16:00:00.000Z" itemprop="datePublished">2016-09-07</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/前端/">前端</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Bootstrap/">Bootstrap</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;&emsp;最近，有个简易的任务需要做个后台管理系统，没有现成的页面模板，只能亲自动手。<br>有两个方案：  </p>
+<ol>
+<li>用别人写好的后台模板页面拿来改的，修改复杂程度高，同时任务需求也很简单，用了别人的模板更容易束缚自己。  </li>
+<li>想着Bootstrap前端框架的强大，不如利用这次任务的机会初识Bootstrap，简易制后台页面，满足任务需求。<br>显然，跟着<a href="http://www.bootcss.com/" target="_blank" rel="noopener">Bootstrap中文网</a>的实例很快就做出想要的页面效果。<br>特别推荐：更多Bootstrap主题[<a href="http://bootswatch.com/" target="_blank" rel="noopener">点击查看</a>]</li>
+</ol>
+<h3 id="文件引入"><a href="#文件引入" class="headerlink" title="文件引入"></a>文件引入</h3><ol>
+<li>css引入：<br> 最好，为了统一规范项目css文件，创建css文件夹用于存放相关css文件。<br> 另外，其它一些style存放在main.css中（外部css文件引入）。</li>
+<li>js引入：<br> 同样，为了统一规范项目js文件，创建js文件夹用于存放相关js文件。</li>
+<li>文件引入： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/bootstrap.min.css&quot;&gt;</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/main.css&quot;&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery-3.1.0.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;js/bootstrap.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="页脚设置"><a href="#页脚设置" class="headerlink" title="页脚设置"></a>页脚设置</h3><p>将footer固定在页面底部的实现方法：</p>
+<ul>
+<li><p>HTML结构：   </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;footer&gt;footer&lt;/footer&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CSS设置：   </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/* 动态为footer添加类fixed-bottom */</span><br><span class="line">.fixed-bottom &#123;position: fixed;bottom: 0;width:100%;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>js代码：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$(function()&#123;</span><br><span class="line">    function footerPosition()&#123;</span><br><span class="line">        $(&quot;footer&quot;).removeClass(&quot;fixed-bottom&quot;);</span><br><span class="line">        var contentHeight = document.body.scrollHeight,//网页正文全文高度</span><br><span class="line">            winHeight = window.innerHeight;//可视窗口高度，不包括浏览器顶部工具栏</span><br><span class="line">        if(!(contentHeight &gt; winHeight))&#123;</span><br><span class="line">            //当网页正文高度小于可视窗口高度时，为footer添加类fixed-bottom</span><br><span class="line">            $(&quot;footer&quot;).addClass(&quot;fixed-bottom&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $(&quot;footer&quot;).removeClass(&quot;fixed-bottom&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    footerPosition();</span><br><span class="line">    $(window).resize(footerPosition);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h3><p>&emsp;&emsp;[<a href="https://abinnz.github.io/projects/bootstrap-demo/system/index.html" target="_blank" rel="noopener">点击查看</a>]</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+    <div class="a2a_kit a2a_default_style">
+    <a class="a2a_dd" href="https://www.addtoany.com/share">Share</a>
+    <span class="a2a_divider"></span>
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_google_plus"></a>
+    <a class="a2a_button_pinterest"></a>
+    <a class="a2a_button_tumblr"></a>
+</div>
+<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+<style>
+    .a2a_menu {
+        border-radius: 4px;
+    }
+    .a2a_menu a {
+        margin: 2px 0;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 4px;
+        color: inherit !important;
+        font-family: 'Microsoft Yahei';
+    }
+    #a2apage_dropdown {
+        margin: 10px 0;
+    }
+    .a2a_mini_services {
+        padding: 10px;
+    }
+    a.a2a_i,
+    i.a2a_i {
+        width: 122px;
+        line-height: 16px;
+    }
+    a.a2a_i .a2a_svg,
+    a.a2a_more .a2a_svg {
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        vertical-align: top;
+        background-size: 16px;
+    }
+    a.a2a_i {
+        border: none !important;
+    }
+    a.a2a_menu_show_more_less {
+        margin: 0;
+        padding: 10px 0;
+        line-height: 16px;
+    }
+    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+    .a2a_mini_services{*+height:1%;}
+</style>
+
+</div>
+
+            
+    
+        <a href="http://abinnz.com/posts/2016-09-07-my-bootstrap-demo/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://abinnz.com/posts/2016-09-07-my-bootstrap-demo/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/posts/2016-09-11-export-table-data/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    表格数据的导出
+                
+            </div>
+        </a>
+    
+    
+        <a href="/posts/2016-08-30-oracle-table-switch/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">横表与纵表互换-Oracle</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/应用部署/">应用部署</a></p>
+                            <p class="item-title"><a href="/posts/2018-01-08-aliyun-ecs-deploy-pyspider-summary/" class="title">阿里云ECS部署Pyspider总结</a></p>
+                            <p class="item-date"><time datetime="2018-01-07T16:00:00.000Z" itemprop="datePublished">2018-01-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/技能/">技能</a></p>
+                            <p class="item-title"><a href="/posts/2017-12-19-cntlm-proxy-setting/" class="title">公司内网透过Cntlm代理上网</a></p>
+                            <p class="item-date"><time datetime="2017-12-18T16:00:00.000Z" itemprop="datePublished">2017-12-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/数据库/">数据库</a></p>
+                            <p class="item-title"><a href="/posts/2017-12-14-oracle-single-column-product/" class="title">Oracle 同一栏位数值相乘的解决办法</a></p>
+                            <p class="item-date"><time datetime="2017-12-13T16:00:00.000Z" itemprop="datePublished">2017-12-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/数据库/">数据库</a></p>
+                            <p class="item-title"><a href="/posts/2017-08-20-oracle-virtual-table/" class="title">Oracle 构造虚表方法</a></p>
+                            <p class="item-date"><time datetime="2017-08-19T16:00:00.000Z" itemprop="datePublished">2017-08-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/工作经历/">工作经历</a></p>
+                            <p class="item-title"><a href="/posts/2017-07-02-summary-for-half-year-of-2017/" class="title">2017前半年总结</a></p>
+                            <p class="item-date"><time datetime="2017-07-01T16:00:00.000Z" itemprop="datePublished">2017-07-02</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工作经历/">工作经历</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/应用部署/">应用部署</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技能/">技能</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活经历/">生活经历</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程实践/">编程实践</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程语言/">编程语言</a><span class="category-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2017/">2017</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bootstrap/">Bootstrap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cntlm/">Cntlm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaWeb/">JavaWeb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/">Oracle</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pyspider/">Pyspider</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记录/">记录</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/2017/" style="font-size: 10px;">2017</a> <a href="/tags/Bootstrap/" style="font-size: 15px;">Bootstrap</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Cntlm/" style="font-size: 10px;">Cntlm</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JS/" style="font-size: 15px;">JS</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaWeb/" style="font-size: 10px;">JavaWeb</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Oracle/" style="font-size: 20px;">Oracle</a> <a href="/tags/Pyspider/" style="font-size: 10px;">Pyspider</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/爬虫/" style="font-size: 15px;">爬虫</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 Abinnz<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://abinnz.com/posts/2016-09-07-my-bootstrap-demo/';
+        
+        this.page.identifier = '2016-09-07-my-bootstrap-demo';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'abinnz-blog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
