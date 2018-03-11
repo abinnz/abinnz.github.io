@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>cropper</title>
+	<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.4/cropper.min.css">
+	<script type="text/javascript" src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+	<script type="text/javascript" src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.4/cropper.min.js"></script>
+
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<h3 class="page-header">Choose a picture</h3>
+				<div class="form-group form-inline">
+					<label>Picture：</label>
+					<input type="file" class="form-control" id="file" >
+					<button class="btn btn-default" id="btnSave">Save</button>
+				</div>
+			</div>
+		</div>
+	    <div class="row">
+
+	      	<div class="col-sm-6">
+	        	<h3 class="page-header">Cropper</h3>
+		        <div>
+		        <img class="img-responsive" id="image">
+		        </div>
+	      	</div>
+
+			<div class="col-sm-6">
+				<h3 class="page-header">Preview</h3>
+				<div class="row">
+				  	<div class="col-sm-6">
+				    	<div class="preview"></div>
+				  	</div>
+				  	<div class="col-sm-4">
+				    	<div class="preview"></div>
+				  	</div>
+				  	<div class="col-sm-2">
+				    	<div class="preview"></div>
+				  	</div>
+				</div>
+			</div>
+
+	    </div>
+	</div>
+</body>
+
+
+<script type="text/javascript">
+	
+	//图片预览
+	$("#file").on("change",function(){
+		var $file = $(this);
+		var fileObj = $file[0];
+		var windowURL = window.URL || window.webkitURL;
+        var dataURL;
+        if(fileObj && fileObj.files && fileObj.files[0]){
+			//Chrome、Edge、IE11|10
+        	dataURL = windowURL.createObjectURL(fileObj.files[0]);
+        }else{
+        	//IE9  file:/// 协议
+        	dataURL = "file:///" + $file.val();	
+        }
+        //替换img.src
+        $("#image").attr("src",dataURL);
+        //创建裁剪区
+        buildCropper(dataURL);
+	});
+	
+	function buildCropper(dataURL){
+		var $previews = $('.preview');
+		var $clone = $("<img src="+dataURL+">");
+
+		$clone.css({
+			display: 'block',
+			width: '100%',
+			minWidth: 0,
+			minHeight: 0,
+			maxWidth: 'none',
+			maxHeight: 'none'
+		});
+
+		$previews.css({
+			width: '100%',
+			overflow: 'hidden'
+		}).html($clone);
+
+		$("#image").cropper({
+			//aspectRatio: 16 / 9,
+          	crop: function (e) {
+            	var imageData = $(this).cropper('getImageData');
+            	var previewAspectRatio = e.width / e.height;
+
+            	$previews.each(function () {
+              		var $preview = $(this);
+              		var previewWidth = $preview.width();
+              		var previewHeight = previewWidth / previewAspectRatio;
+              		var imageScaledRatio = e.width / previewWidth;
+
+	          	$preview.height(previewHeight).find('img').css({
+           	 		width: imageData.naturalWidth / imageScaledRatio,
+	            	height: imageData.naturalHeight / imageScaledRatio,
+	            	marginLeft: -e.x / imageScaledRatio,
+	            	marginTop: -e.y / imageScaledRatio
+              	});
+            });
+          }
+        });
+		//替换照片
+		$("#image").cropper("replace",dataURL);
+	}
+
+	$("#btnSave").on("click",function(){
+		$("#image").cropper("getCroppedCanvas").toBlob(function(blob){
+			var formData = new FormData();
+
+			formData.append('croppedImage', blob);
+			//异步提交
+			//...
+
+		});
+	});
+</script>
+</html>
