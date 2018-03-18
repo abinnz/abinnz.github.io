@@ -492,7 +492,7 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
         
             <p><h3 id="一、简述"><a href="#一、简述" class="headerlink" title="一、简述"></a>一、简述</h3><p>最近用pyspider写了个爬虫需要部署到云服务器，所以入手了阿里云ECS，来完成最后的部署工作。当然在部署pyspider过程中，碰到些许问题，这里做些记录和总结。</p>
-<h3 id="二、部署工作"><a href="#二、部署工作" class="headerlink" title="二、部署工作"></a>二、部署工作</h3><p>主要用到的命令(git-bash)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. ssh连接服务端：ssh root@host</span><br><span class="line">2. 公钥copy至服务端：scp ~/.ssh/id_rsa.pub root@host ~/.ssh/authorized_keys，需要先在服务端创建~/.ssh文件夹</span><br><span class="line">3. 查看当前系统版本：cat /etc/redhat-release</span><br></pre></td></tr></table></figure></p></p>
+<h3 id="二、部署工作"><a href="#二、部署工作" class="headerlink" title="二、部署工作"></a>二、部署工作</h3><p>主要用到的命令(git-bash)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. ssh连接服务端：ssh root@host</span><br><span class="line">2. 公钥copy至服务端：scp ~/.ssh/id_rsa.pub root@host:~/.ssh/authorized_keys，需要先在服务端创建~/.ssh文件夹</span><br><span class="line">3. 查看当前系统版本：cat /etc/redhat-release</span><br></pre></td></tr></table></figure></p></p>
             <p class="article-more-link">
                 <a href="/posts/2018-01-08-aliyun-ecs-deploy-pyspider-summary/#more">查看更多</a>
             </p>
