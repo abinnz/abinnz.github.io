@@ -3,15 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>归档: 2018/7 | Abinnz&#39;s blog</title>
+    <title>使用Docker容器来运行应用 | Abinnz&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Abinnz&#39;s blog">
-<meta property="og:url" content="http://abinnz.com/archives/2018/07/index.html">
+    <meta name="description" content="一、起因之前购买的服务器快要过期了，打算续费发现巨贵，远不如新买的服务器划算，所以只能乖乖买新的服务器。可是，原有的应用要重新部署到新服务器，估算部署工作量巨大，想想就觉得好恐怖。这种被运维部署工作支配的恐怖感，相信不止我一个人有过。我再想，当时为什么就不能好好利用Docker来解决现在的烦恼？Docker类似虚拟机，沙箱环境可以隔离外部环境，性能开销低，更轻量化。Docker可以很方便的迁移容器">
+<meta name="keywords" content="Docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Docker容器来运行应用">
+<meta property="og:url" content="http://abinnz.com/posts/2018-06-30-run-application-with-docker/index.html">
 <meta property="og:site_name" content="Abinnz&#39;s blog">
+<meta property="og:description" content="一、起因之前购买的服务器快要过期了，打算续费发现巨贵，远不如新买的服务器划算，所以只能乖乖买新的服务器。可是，原有的应用要重新部署到新服务器，估算部署工作量巨大，想想就觉得好恐怖。这种被运维部署工作支配的恐怖感，相信不止我一个人有过。我再想，当时为什么就不能好好利用Docker来解决现在的烦恼？Docker类似虚拟机，沙箱环境可以隔离外部环境，性能开销低，更轻量化。Docker可以很方便的迁移容器">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-06T15:28:09.130Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Abinnz&#39;s blog">
+<meta name="twitter:title" content="使用Docker容器来运行应用">
+<meta name="twitter:description" content="一、起因之前购买的服务器快要过期了，打算续费发现巨贵，远不如新买的服务器划算，所以只能乖乖买新的服务器。可是，原有的应用要重新部署到新服务器，估算部署工作量巨大，想想就觉得好恐怖。这种被运维部署工作支配的恐怖感，相信不止我一个人有过。我再想，当时为什么就不能好好利用Docker来解决现在的烦恼？Docker类似虚拟机，沙箱环境可以隔离外部环境，性能开销低，更轻量化。Docker可以很方便的迁移容器">
     
 
     
@@ -204,50 +209,188 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main"><div class="timeline timeline-wrap">
-    
-            <div class="timeline-row timeline-row-major">
-                <span class="node"><i class="fa fa-calendar"></i></span>
-                <h1 class="title">2018</h1>
-            </div>
+            <section id="main"><article id="post-2018-06-30-run-application-with-docker" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/posts/2018-07-28-simply-use-adb-commad/">简单使用ADB命令</a>
+        <h1 class="article-title" itemprop="name">
+            使用Docker容器来运行应用
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/posts/2018-07-28-simply-use-adb-commad/">
-            <time datetime="2018-07-27T16:00:00.000Z" itemprop="datePublished">2018-07-28</time>
+        <a href="/posts/2018-06-30-run-application-with-docker/">
+            <time datetime="2018-06-29T16:00:00.000Z" itemprop="datePublished">2018-06-30</time>
         </a>
     </div>
 
 
-                    
+                        
     <div class="article-category">
     	<i class="fa fa-folder"></i>
         <a class="article-category-link" href="/categories/技能/">技能</a>
     </div>
 
-                    
+                        
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/ADB/">ADB</a>
+        <a class="tag-link" href="/tags/Docker/">Docker</a>
     </div>
 
-                </div>
-            </div>
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h3 id="一、起因"><a href="#一、起因" class="headerlink" title="一、起因"></a>一、起因</h3><p>之前购买的服务器快要过期了，打算续费发现巨贵，远不如新买的服务器划算，所以只能乖乖买新的服务器。可是，原有的应用要重新部署到新服务器，估算部署工作量巨大，想想就觉得好恐怖。这种被运维部署工作支配的恐怖感，相信不止我一个人有过。我再想，当时为什么就不能好好利用Docker来解决现在的烦恼？Docker类似虚拟机，沙箱环境可以隔离外部环境，性能开销低，更轻量化。Docker可以很方便的迁移容器到新的运行环境，所以正好解决上述的问题。<br><a id="more"></a></p>
+<h3 id="二、docker镜像命令"><a href="#二、docker镜像命令" class="headerlink" title="二、docker镜像命令"></a>二、docker镜像命令</h3><ol>
+<li>搜索docker hub镜像<br> docker search image</li>
+<li>拉取image到本机<br> docker pull image</li>
+<li>列出镜像列表<br> docker images</li>
+<li>删除一个或多个镜像<br> docker rmi image</li>
+<li>显示镜像的历史<br> docker history image:tag</li>
+<li>通过容器创建镜像<br> docker commit -m=”Commit info” -a=”author” container-id author/image:tag</li>
+<li>上传镜像到docker hub<br> docker push author/image:tag</li>
+</ol>
+<h3 id="三、docker容器命令"><a href="#三、docker容器命令" class="headerlink" title="三、docker容器命令"></a>三、docker容器命令</h3><ol>
+<li>启动容器<br> docker run image/name/id<br> docker run –name name image:tag #前台方式运行镜像并给容器命令<br> docker run -d image:tag #后台方式运行镜像<br> docker run -v /path1:/path2 #容器里路径/path2数据挂载到外部路径/path1<br> dcoker run -e KEY=value #传入运行环境参数<br> docker run -p port1:port2 image:tag #端口映射，宿主端口:容器端口</li>
+<li>停止容器<br> docker stop name/id</li>
+<li>重启容器<br> docker restart name/id</li>
+<li>杀死容器<br> docker kill name/id</li>
+<li>删除容器<br> docker rm name/id</li>
+<li>显示容器进程信息<br> docker top name/id</li>
+<li>容器中执行命令<br> docker exec name/id command<br> docker exec -it name/id bash #交互方式执行命令</li>
+<li>查看容器<br> docker ps #运行容器<br> docker ps -a #所有容器</li>
+<li>查看容器端口映射<br> docker port name/id</li>
+<li>查看容器详细信息<br>docker inspect name/id</li>
+</ol>
+<h3 id="四、mysql容器实例"><a href="#四、mysql容器实例" class="headerlink" title="四、mysql容器实例"></a>四、mysql容器实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name mysql -d -p 0.0.0.0:3306:3306 -v /data/mysql:/var/lib/mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=yes mysql:5.6.39</span><br></pre></td></tr></table></figure>
+<p>参数解析：  </p>
+<ol>
+<li>–name: 指定容器名称为mysql</li>
+<li>-d: 指定后台运行</li>
+<li>-p: 将容器内部端口3306暴露出来</li>
+<li>-v: 容器数据挂载至宿主</li>
+<li>-e: 容器运行环境参数，设置mysql运行匿名登陆</li>
+</ol>
+<p>特别注意：<br>上述创建的mysql容器，时区为零时区，对于中国地区，需要将时区调至为东八区。<br>若使用tzselect命令调整时区，退出本次终端后则失效，所以最直接的办法是使用下述的命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it mysql bash #进入mysql容器  </span><br><span class="line">date -R #查看时区，确定为零时区</span><br><span class="line">ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime #设置软连接</span><br><span class="line">exit #退出容器</span><br><span class="line">docker restart mysql #重启mysql容器</span><br></pre></td></tr></table></figure></p>
+<p>最后一步，得重启mysql容器才能生效。</p>
+<h3 id="五、参考资料"><a href="#五、参考资料" class="headerlink" title="五、参考资料"></a>五、参考资料</h3><p><a href="http://www.runoob.com/docker/docker-command-manual.html" target="_blank" rel="noopener">Docker 命令大全</a></p>
+
+        
         </div>
-    
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+    <div class="a2a_kit a2a_default_style">
+    <a class="a2a_dd" href="https://www.addtoany.com/share">Share</a>
+    <span class="a2a_divider"></span>
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_google_plus"></a>
+    <a class="a2a_button_pinterest"></a>
+    <a class="a2a_button_tumblr"></a>
 </div>
+<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+<style>
+    .a2a_menu {
+        border-radius: 4px;
+    }
+    .a2a_menu a {
+        margin: 2px 0;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 4px;
+        color: inherit !important;
+        font-family: 'Microsoft Yahei';
+    }
+    #a2apage_dropdown {
+        margin: 10px 0;
+    }
+    .a2a_mini_services {
+        padding: 10px;
+    }
+    a.a2a_i,
+    i.a2a_i {
+        width: 122px;
+        line-height: 16px;
+    }
+    a.a2a_i .a2a_svg,
+    a.a2a_more .a2a_svg {
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        vertical-align: top;
+        background-size: 16px;
+    }
+    a.a2a_i {
+        border: none !important;
+    }
+    a.a2a_menu_show_more_less {
+        margin: 0;
+        padding: 10px 0;
+        line-height: 16px;
+    }
+    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+    .a2a_mini_services{*+height:1%;}
+</style>
+
+</div>
+
+            
+    
+        <a href="http://abinnz.com/posts/2018-06-30-run-application-with-docker/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://abinnz.com/posts/2018-06-30-run-application-with-docker/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/posts/2018-07-28-simply-use-adb-commad/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    简单使用ADB命令
+                
+            </div>
+        </a>
+    
+    
+        <a href="/posts/2018-03-16-sublime-text3-packages/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Sublime Text3 插件</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
 </section>
             
                 
@@ -379,11 +522,13 @@ ga('send', 'pageview');
     <script>
     var disqus_config = function () {
         
-        this.page.identifier = '';
+            this.page.url = 'http://abinnz.com/posts/2018-06-30-run-application-with-docker/';
+        
+        this.page.identifier = '2018-06-30-run-application-with-docker';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
-        s.src = '//' + 'abinnz-blog' + '.disqus.com/count.js';
+        s.src = '//' + 'abinnz-blog' + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
