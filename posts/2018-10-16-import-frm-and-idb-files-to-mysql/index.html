@@ -3,15 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Abinnz&#39;s blog</title>
+    <title>从 .frm 和 .idb 还原 MySQL 表数据以及表结构 | Abinnz&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Abinnz&#39;s blog">
-<meta property="og:url" content="http://abinnz.com/page/6/index.html">
+    <meta name="description" content="一、只还原表数据前提，被还原的表结构与之前的表结构一致。举例子：需要被还原的表：example  ALTER TABLE example DISCARD TABLESPACE; # 脱离保存表 example 空间数据 将已备份好的 example.ibd 覆盖到当前数据目录 ALTER TABLE example IMPORT TABLESPACE; # 重新导入表 example 空间数据">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从 .frm 和 .idb 还原 MySQL 表数据以及表结构">
+<meta property="og:url" content="http://abinnz.com/posts/2018-10-16-import-frm-and-idb-files-to-mysql/index.html">
 <meta property="og:site_name" content="Abinnz&#39;s blog">
+<meta property="og:description" content="一、只还原表数据前提，被还原的表结构与之前的表结构一致。举例子：需要被还原的表：example  ALTER TABLE example DISCARD TABLESPACE; # 脱离保存表 example 空间数据 将已备份好的 example.ibd 覆盖到当前数据目录 ALTER TABLE example IMPORT TABLESPACE; # 重新导入表 example 空间数据">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-16T13:42:20.795Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Abinnz&#39;s blog">
+<meta name="twitter:title" content="从 .frm 和 .idb 还原 MySQL 表数据以及表结构">
+<meta name="twitter:description" content="一、只还原表数据前提，被还原的表结构与之前的表结构一致。举例子：需要被还原的表：example  ALTER TABLE example DISCARD TABLESPACE; # 脱离保存表 example 空间数据 将已备份好的 example.ibd 覆盖到当前数据目录 ALTER TABLE example IMPORT TABLESPACE; # 重新导入表 example 空间数据">
     
 
     
@@ -204,16 +209,15 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main">
-    <article id="post-2016-08-16-no-cache" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-2018-10-16-import-frm-and-idb-files-to-mysql" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
             <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/posts/2016-08-16-no-cache/">如何避免浏览器自动缓存</a>
+        <h1 class="article-title" itemprop="name">
+            从 .frm 和 .idb 还原 MySQL 表数据以及表结构
         </h1>
     
 
@@ -222,128 +226,8 @@ ga('send', 'pageview');
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/posts/2016-08-16-no-cache/">
-            <time datetime="2016-08-15T16:00:00.000Z" itemprop="datePublished">2016-08-16</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/前端/">前端</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/HTML/">HTML</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><h3 id="使用meta标签"><a href="#使用meta标签" class="headerlink" title="使用meta标签"></a>使用meta标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Expires&quot; content=&quot;0&quot;&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;Pragma&quot; content=&quot;no-cache&quot;&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;Cache-control&quot; content=&quot;no-cache&quot;&gt;</span><br></pre></td></tr></table></figure></p>
-            <p class="article-more-link">
-                <a href="/posts/2016-08-16-no-cache/#more">查看更多</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-    <div class="a2a_kit a2a_default_style">
-    <a class="a2a_dd" href="https://www.addtoany.com/share">Share</a>
-    <span class="a2a_divider"></span>
-    <a class="a2a_button_facebook"></a>
-    <a class="a2a_button_twitter"></a>
-    <a class="a2a_button_google_plus"></a>
-    <a class="a2a_button_pinterest"></a>
-    <a class="a2a_button_tumblr"></a>
-</div>
-<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
-<style>
-    .a2a_menu {
-        border-radius: 4px;
-    }
-    .a2a_menu a {
-        margin: 2px 0;
-        font-size: 14px;
-        line-height: 16px;
-        border-radius: 4px;
-        color: inherit !important;
-        font-family: 'Microsoft Yahei';
-    }
-    #a2apage_dropdown {
-        margin: 10px 0;
-    }
-    .a2a_mini_services {
-        padding: 10px;
-    }
-    a.a2a_i,
-    i.a2a_i {
-        width: 122px;
-        line-height: 16px;
-    }
-    a.a2a_i .a2a_svg,
-    a.a2a_more .a2a_svg {
-        width: 16px;
-        height: 16px;
-        line-height: 16px;
-        vertical-align: top;
-        background-size: 16px;
-    }
-    a.a2a_i {
-        border: none !important;
-    }
-    a.a2a_menu_show_more_less {
-        margin: 0;
-        padding: 10px 0;
-        line-height: 16px;
-    }
-    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
-    .a2a_mini_services{*+height:1%;}
-</style>
-
-</div>
-
-            
-    
-        <a href="http://abinnz.com/posts/2016-08-16-no-cache/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://abinnz.com/posts/2016-08-16-no-cache/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-2016-08-12-oracle-null" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/posts/2016-08-12-oracle-null/">对于NULL值的处理-Oracle</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/posts/2016-08-12-oracle-null/">
-            <time datetime="2016-08-11T16:00:00.000Z" itemprop="datePublished">2016-08-12</time>
+        <a href="/posts/2018-10-16-import-frm-and-idb-files-to-mysql/">
+            <time datetime="2018-10-15T16:00:00.000Z" itemprop="datePublished">2018-10-16</time>
         </a>
     </div>
 
@@ -357,7 +241,7 @@ ga('send', 'pageview');
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Oracle/">Oracle</a>
+        <a class="tag-link" href="/tags/MySQL/">MySQL</a>
     </div>
 
                     </div>
@@ -367,13 +251,28 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><p>之前使用Mysql的比较多，所以有意识的认为Oracle对于NULL的处理与Mysql是一样，促成这种错误的认识。</p>
-<h3 id="一、查询数据"><a href="#一、查询数据" class="headerlink" title="一、查询数据"></a>一、查询数据</h3><p>假设查询EMP[Table]，员工没有佣金的数据，查询条件：comm = 0</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM EMP WHERE COMM=0;</span><br></pre></td></tr></table></figure>
-<p><strong>Mysql:</strong> 能直接带出满足字段条件的记录，无论是NULL值<br><br><strong>Oracle:</strong> 显然是行不通的，需要对NULL值进行预处理，才能带出查询的记录，否则查询的结果没有NULL值的结果。</p>
-            <p class="article-more-link">
-                <a href="/posts/2016-08-12-oracle-null/#more">查看更多</a>
-            </p>
+            
+            <h4 id="一、只还原表数据"><a href="#一、只还原表数据" class="headerlink" title="一、只还原表数据"></a>一、只还原表数据</h4><p>前提，被还原的表结构与之前的表结构一致。举例子：需要被还原的表：example</p>
+<ol>
+<li>ALTER TABLE example DISCARD TABLESPACE; # 脱离保存表 example 空间数据</li>
+<li>将已备份好的 example.ibd 覆盖到当前数据目录</li>
+<li>ALTER TABLE example IMPORT TABLESPACE; # 重新导入表 example 空间数据<a id="more"></a>
+</li>
+</ol>
+<h4 id="二、InnoDB-整体还原表数据以及表结构"><a href="#二、InnoDB-整体还原表数据以及表结构" class="headerlink" title="二、InnoDB 整体还原表数据以及表结构"></a>二、InnoDB 整体还原表数据以及表结构</h4><p>.frm: 保留表数据结构；.ibd: 保留表数据;<br>具体情况分以下两种：根据不同MySQL版本 <a href="https://dev.mysql.com/doc/refman/5.5/en/innodb-parameters.html#sysvar_innodb_file_per_table" target="_blank" rel="noopener">innodb_file_per_table</a> 配置有关。<br>MySQL &lt;= 5.5.6 默认开启 innodb_file_per_table；MySQL &gt;= 5.5.7 默认关闭 innodb_file_per_table。</p>
+<ol>
+<li><p>之前服务：innodb_file_per_table=1</p>
+<p> 用已备份的 .frm 和 .ibd 文件覆盖需要被还原的表，同时还需要覆盖 <code>ibdata1</code>, <code>ib_logfile0</code>, <code>ib_logfile1</code> 对应文件</p>
+</li>
+<li><p>之前服务: innodb_file_per_table=0</p>
+<p> 仅需要用已备份的 .frm 和 .ibd 文件覆盖需要被还原的表</p>
+</li>
+</ol>
+<h4 id="三、参考资料"><a href="#三、参考资料" class="headerlink" title="三、参考资料"></a>三、参考资料</h4><ol>
+<li><a href="https://stackoverflow.com/questions/5745221/import-frm-and-opt-files-to-mysql" target="_blank" rel="noopener">Import .frm and .opt files to MySQL</a></li>
+<li><a href="https://www.cnblogs.com/zhujunxiong/p/7631001.html" target="_blank" rel="noopener">MySQL innodb引擎下根据.frm和.ibd文件恢复表结构和数据</a></li>
+</ol>
+
         
         </div>
         <footer class="article-footer">
@@ -438,264 +337,37 @@ ga('send', 'pageview');
 
             
     
-        <a href="http://abinnz.com/posts/2016-08-12-oracle-null/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://abinnz.com/posts/2016-08-12-oracle-null/">评论</a>
+        <a href="http://abinnz.com/posts/2018-10-16-import-frm-and-idb-files-to-mysql/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://abinnz.com/posts/2018-10-16-import-frm-and-idb-files-to-mysql/">评论</a>
     
 
         </footer>
     </div>
     
-</article>
-
-
-
-    <article id="post-2016-08-08-git-summary" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
         
-        
-            <header class="article-header">
-                
+<nav id="article-nav">
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/posts/2016-08-08-git-summary/">Git常用命令总结</a>
-        </h1>
     
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/posts/2016-08-08-git-summary/">
-            <time datetime="2016-08-07T16:00:00.000Z" itemprop="datePublished">2016-08-08</time>
+        <a href="/posts/2018-07-28-simply-use-adb-commad/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">简单使用ADB命令</div>
         </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/技能/">技能</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Git/">Git</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>这里有一篇关于<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">Git入门的教程</a>，是廖雪峰写的教程，内容通俗易懂。<br>在线Git命令窗口：<a href="https://try.github.io/levels/1/challenges/1" target="_blank" rel="noopener">点击这里</a><br>在下面我总结一些常用的命令：</p>
-<h4 id="1-常用Git-Bash命令"><a href="#1-常用Git-Bash命令" class="headerlink" title="1. 常用Git Bash命令"></a>1. 常用Git Bash命令</h4><ul>
-<li>创建目录：<code>mkdir dirName</code></li>
-<li>变更目录：<code>cd dirName</code></li>
-<li>显示路径：<code>pwd</code></li>
-<li>显示内容：<code>ls --all</code></p>
-            <p class="article-more-link">
-                <a href="/posts/2016-08-08-git-summary/#more">查看更多</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-    <div class="a2a_kit a2a_default_style">
-    <a class="a2a_dd" href="https://www.addtoany.com/share">Share</a>
-    <span class="a2a_divider"></span>
-    <a class="a2a_button_facebook"></a>
-    <a class="a2a_button_twitter"></a>
-    <a class="a2a_button_google_plus"></a>
-    <a class="a2a_button_pinterest"></a>
-    <a class="a2a_button_tumblr"></a>
-</div>
-<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
-<style>
-    .a2a_menu {
-        border-radius: 4px;
-    }
-    .a2a_menu a {
-        margin: 2px 0;
-        font-size: 14px;
-        line-height: 16px;
-        border-radius: 4px;
-        color: inherit !important;
-        font-family: 'Microsoft Yahei';
-    }
-    #a2apage_dropdown {
-        margin: 10px 0;
-    }
-    .a2a_mini_services {
-        padding: 10px;
-    }
-    a.a2a_i,
-    i.a2a_i {
-        width: 122px;
-        line-height: 16px;
-    }
-    a.a2a_i .a2a_svg,
-    a.a2a_more .a2a_svg {
-        width: 16px;
-        height: 16px;
-        line-height: 16px;
-        vertical-align: top;
-        background-size: 16px;
-    }
-    a.a2a_i {
-        border: none !important;
-    }
-    a.a2a_menu_show_more_less {
-        margin: 0;
-        padding: 10px 0;
-        line-height: 16px;
-    }
-    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
-    .a2a_mini_services{*+height:1%;}
-</style>
-
-</div>
-
-            
     
-        <a href="http://abinnz.com/posts/2016-08-08-git-summary/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://abinnz.com/posts/2016-08-08-git-summary/">评论</a>
-    
+</nav>
 
-        </footer>
-    </div>
+
     
 </article>
 
 
-
-    <article id="post-2016-08-06-first-post" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/posts/2016-08-06-first-post/">这是我第一篇博客!</a>
-        </h1>
     
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/posts/2016-08-06-first-post/">
-            <time datetime="2016-08-05T16:00:00.000Z" itemprop="datePublished">2016-08-06</time>
-        </a>
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/生活经历/">生活经历</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/记录/">记录</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><h3 id="记录生活"><a href="#记录生活" class="headerlink" title="记录生活"></a>记录生活</h3><p>&emsp;&emsp;很久之前，我一直希望能有自己的博客，用来记录关于自己的日志。虽然，我有这样的想法，但是迟迟没行动。可能，认为是时机未成熟，或者是觉得太麻烦，所以拖延了这么长的时间。直到今天，我才开始动手写博客，想用来记录平时遇到的问题，或者分享我认为有趣的东西和好的想法。</p>
-            <p class="article-more-link">
-                <a href="/posts/2016-08-06-first-post/#more">查看更多</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-    <div class="a2a_kit a2a_default_style">
-    <a class="a2a_dd" href="https://www.addtoany.com/share">Share</a>
-    <span class="a2a_divider"></span>
-    <a class="a2a_button_facebook"></a>
-    <a class="a2a_button_twitter"></a>
-    <a class="a2a_button_google_plus"></a>
-    <a class="a2a_button_pinterest"></a>
-    <a class="a2a_button_tumblr"></a>
-</div>
-<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
-<style>
-    .a2a_menu {
-        border-radius: 4px;
-    }
-    .a2a_menu a {
-        margin: 2px 0;
-        font-size: 14px;
-        line-height: 16px;
-        border-radius: 4px;
-        color: inherit !important;
-        font-family: 'Microsoft Yahei';
-    }
-    #a2apage_dropdown {
-        margin: 10px 0;
-    }
-    .a2a_mini_services {
-        padding: 10px;
-    }
-    a.a2a_i,
-    i.a2a_i {
-        width: 122px;
-        line-height: 16px;
-    }
-    a.a2a_i .a2a_svg,
-    a.a2a_more .a2a_svg {
-        width: 16px;
-        height: 16px;
-        line-height: 16px;
-        vertical-align: top;
-        background-size: 16px;
-    }
-    a.a2a_i {
-        border: none !important;
-    }
-    a.a2a_menu_show_more_less {
-        margin: 0;
-        padding: 10px 0;
-        line-height: 16px;
-    }
-    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
-    .a2a_mini_services{*+height:1%;}
-</style>
-
-</div>
-
-            
-    
-        <a href="http://abinnz.com/posts/2016-08-06-first-post/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://abinnz.com/posts/2016-08-06-first-post/">评论</a>
+</section>
     
 
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/5/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
-    </nav>
 </section>
             
                 
@@ -827,11 +499,13 @@ ga('send', 'pageview');
     <script>
     var disqus_config = function () {
         
-        this.page.identifier = '';
+            this.page.url = 'http://abinnz.com/posts/2018-10-16-import-frm-and-idb-files-to-mysql/';
+        
+        this.page.identifier = '2018-10-16-import-frm-and-idb-files-to-mysql';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
-        s.src = '//' + 'abinnz-blog' + '.disqus.com/count.js';
+        s.src = '//' + 'abinnz-blog' + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
